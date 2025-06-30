@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $correo = $_POST["correo"] ?? '';
+  $contraseña = $_POST["contraseña"] ?? '';
+
+  if ($correo === "correo@prueba.com" && $contraseña === "12345") {
+    $_SESSION["usuario"] = $correo;
+    $_SESSION["rol"] = "paciente";
+    header("Location: index_paciente.php");
+    exit();
+  } else {
+    echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
+    exit();
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -46,7 +65,7 @@
 
       <div class="contenedor__login-register">
         <!-- Formulario de Login -->
-        <form action="procesar_login.php" method="POST" class="formulario__login">
+        <form method="POST" class="formulario__login">
           <h2>Iniciar Sesión</h2>
           <input type="email" placeholder="Correo Electrónico" name="correo" required>
           <input type="password" placeholder="Contraseña" name="contraseña" required>
