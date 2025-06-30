@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel del Psicólogo</title>
+  <link rel="stylesheet" href="panel_psicologo.css" />
+  <script defer src="panel_psicologo.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Panel del Psicólogo</h1>
+    <nav>
+      <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#charlas">Charlas</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#pacientes">Pacientes</a></li>
+        <li><a href="#calificaciones">Calificaciones</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard" class="panel-section">
+      <h2>Resumen general</h2>
+      <div class="stats">
+        <div class="card">Charlas creadas: <span id="charlas-count">5</span></div>
+        <div class="card">Pacientes inscritos: <span id="pacientes-count">20</span></div>
+        <div class="card">Reservas activas: <span id="reservas-count">10</span></div>
+        <div class="card">Calificación promedio: <span id="calificacion-promedio">4.5</span></div>
+      </div>
+    </section>
+
+    <!-- Charlas -->
+    <section id="charlas" class="panel-section">
+      <h2>Mis charlas</h2>
+      <button onclick="crearCharla()">+ Nueva charla</button>
+      <ul id="lista-charlas">
+        <li>Charla de ansiedad - 10/07/2025</li>
+        <li>Charla autoestima - 15/07/2025</li>
+      </ul>
+    </section>
+
+    <!-- Reservas -->
+    <section id="reservas" class="panel-section">
+      <h2>Reservas y citas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Paciente</th>
+            <th>Charla</th>
+            <th>Estado</th>
+            <th>Fecha reserva</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reservas">
+          <tr>
+            <td>Juan Pérez</td>
+            <td>Charla ansiedad</td>
+            <td>Confirmada</td>
+            <td>25/06/2025</td>
+            <td><button>Ver</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Pacientes -->
+    <section id="pacientes" class="panel-section">
+      <h2>Pacientes</h2>
+      <ul id="lista-pacientes">
+        <li>Juan Pérez - <em>Ansiedad</em></li>
+        <li>María López - <em>Autoestima</em></li>
+      </ul>
+    </section>
+
+    <!-- Calificaciones -->
+    <section id="calificaciones" class="panel-section">
+      <h2>Calificaciones y comentarios</h2>
+      <ul id="lista-calificaciones">
+        <li>⭐⭐⭐⭐⭐ — "Muy buena charla, me ayudó mucho" - Ana</li>
+        <li>⭐⭐⭐⭐ — "Excelente explicación" - Luis</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tu Consultorio Psicológico</p>
+  </footer>
+</body>
+</html>
