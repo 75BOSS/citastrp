@@ -1,16 +1,13 @@
 <?php
-$host = "localhost"; // Hostinger usa 'localhost' para conexiones internas
+$host = "localhost"; // Confirmado, Hostinger usa localhost
 $usuario = "u240362798_citasTRP";
 $contrasena = "glcp.,._2A.";
-$base_datos = "u240362798_citasTRP";
+$base_de_datos = "u240362798_citasTRP";
 
-$conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
+$conn = new mysqli($host, $usuario, $contrasena, $base_de_datos);
 
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error);
+// Verifica la conexión
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
 }
-
-// Opcional: establecer charset
-$conexion->set_charset("utf8");
 ?>
