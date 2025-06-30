@@ -36,7 +36,7 @@ if (!isset($_SESSION["usuario"])) {
         <li><a href="../contacto.php">Contacto</a></li>
       </ul>
       <div class="auth-buttons">
-        <a class="btn-outline btn" href="#">Mi Cuenta</a>
+        <a class="btn-outline btn" href="mi_cuenta.php">Mi Cuenta</a>
       </div>
     </nav>
   </header>
