@@ -1,23 +1,22 @@
 <?php
 session_start();
 
-// Verificación directa sin base de datos
-$correo = $_POST['correo'] ?? '';
-$pass = $_POST['pass'] ?? '';
+// Simulación de login temporal sin conexión a base de datos
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $correo = $_POST['correo'] ?? '';
+    $pass = $_POST['pass'] ?? '';
 
-if ($correo === 'correo@prueba.com' && $pass === '12345') {
-    $_SESSION['usuario'] = [
-        'nombre' => 'Usuario de Prueba',
-        'correo' => $correo,
-        'rol' => 'paciente'
-    ];
-    header("Location: index_paciente.php");
-    exit;
+    // Verificación hardcodeada
+    if ($correo === "correo@prueba.com" && $pass === "12345") {
+        $_SESSION['correo'] = $correo;
+        $_SESSION['rol'] = 'paciente'; // Asumimos rol paciente
+        header("Location: index_paciente.php");
+        exit;
+    } else {
+        echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
+        exit;
+    }
 } else {
-    echo "<script>
-        alert('Credenciales incorrectas');
-        window.location.href = 'login.php';
-    </script>";
-    exit;
+    echo "Acceso no permitido";
 }
 ?>
