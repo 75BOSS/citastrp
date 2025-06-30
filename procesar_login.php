@@ -1,52 +1,43 @@
 <?php
 session_start();
-require_once 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $correo = $_POST['correo'] ?? '';
-    $contraseña = $_POST['contraseña'] ?? '';
+// Excepción temporal
+if ($_POST['correo'] === 'correo@prueba.com' && $_POST['pass'] === '12345') {
+    $_SESSION['usuario'] = [
+        'nombre' => 'Usuario de Prueba',
+        'correo' => 'correo@prueba.com',
+        'rol' => 'paciente'
+    ];
+    header("Location: index_paciente.php");
+    exit;
+}
 
-    if (empty($correo) || empty($contraseña)) {
-        die("Debes ingresar tu correo y contraseña.");
-    }
+require_once("conexion.php");
 
-    // Buscar el usuario por correo
-    $stmt = $conexion->prepare("SELECT id, nombre, contraseña, rol, foto FROM usuarios WHERE correo = ? AND activo = 1");
-    $stmt->bind_param("s", $correo);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
+// Código original después de la excepción (si no se cumple, sigue con lo normal)
+$correo = $_POST['correo'];
+$pass = $_POST['pass'];
 
-    if ($resultado->num_rows === 1) {
-        $usuario = $resultado->fetch_assoc();
+$sql = "SELECT * FROM usuarios WHERE correo = ?";
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param("s", $correo);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-        if (password_verify($contraseña, $usuario['contraseña'])) {
-            // Guardar datos en sesión
-            $_SESSION['usuario'] = [
-                'id' => $usuario['id'],
-                'nombre' => $usuario['nombre'],
-                'rol' => $usuario['rol'],
-                'foto' => $usuario['foto']
-            ];
-
-            // Redirigir según el rol
-            switch ($usuario['rol']) {
-                case 'paciente':
-                    header("Location: paciente/index_paciente.php");
-                    break;
-                case 'psicologo':
-                    header("Location: psicologo/index_psicologo.php");
-                    break;
-                case 'admin':
-                    header("Location: admin/index_admin.php");
-                    break;
-            }
-            exit();
+if ($resultado->num_rows === 1) {
+    $usuario = $resultado->fetch_assoc();
+    if (password_verify($pass, $usuario['contraseña'])) {
+        $_SESSION['usuario'] = $usuario;
+        if ($usuario['rol'] === 'paciente') {
+            header("Location: index_paciente.php");
         } else {
-            echo "Contraseña incorrecta.";
+            header("Location: index.php");
         }
+        exit;
     } else {
-        echo "Usuario no encontrado o cuenta inactiva.";
+        echo "Contraseña incorrecta";
     }
-
-    $stmt->close();
-    $conex
+} else {
+    echo "Correo no registrado";
+}
+?>
