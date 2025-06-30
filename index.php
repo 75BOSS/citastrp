@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Psivinculo - Servicios Psicológicos</title>
+  <title>Psicovínculo - Servicios Psicológicos</title>
   <link href="css/index.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -27,11 +27,12 @@
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
       <div class="auth-buttons">
-        <a class="btn-outline btn" href="login.html">Reservar Cita</a>
-        <a class="btn-primary btn" href="login.html">Iniciar Sesión</a>
+        <a class="btn-outline btn" href="login.php">Reservar Cita</a>
+        <a class="btn-primary btn" href="login.php">Iniciar Sesión</a>
       </div>
     </nav>
   </header>
+
 
   <section class="gallery-slider">
     <div class="swiper mySwiper">
