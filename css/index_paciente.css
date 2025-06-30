@@ -1,0 +1,78 @@
+/* Estilo exclusivo para index_paciente.php */
+
+.main-content {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f4f4f9;
+}
+
+.bienvenida {
+  margin-bottom: 40px;
+}
+
+.bienvenida h1 {
+  font-size: 2.5rem;
+  color: #5a2d82;
+  margin-bottom: 10px;
+}
+
+.bienvenida p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.bienvenida .btn-primary,
+.bienvenida .btn-secondary {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.bienvenida .btn-primary {
+  background-color: #7f56d9;
+  color: white;
+}
+
+.bienvenida .btn-primary:hover {
+  background-color: #5a2d82;
+}
+
+.bienvenida .btn-secondary {
+  background-color: #eee;
+  color: #7f56d9;
+  border: 1px solid #7f56d9;
+}
+
+.bienvenida .btn-secondary:hover {
+  background-color: #ddd;
+}
+
+.imagen img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+
+/* Footer ajustes si es necesario */
+.footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.footer h4 {
+  color: #5a2d82;
+}
+
+.footer p,
+.footer li {
+  color: #444;
+}
