@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if ($correo === "correo@prueba.com" && $contraseña === "12345") {
     $_SESSION["usuario"] = $correo;
     $_SESSION["rol"] = "paciente";
-    header("Location: index_paciente.php");
+    header("Location: paciente/index_paciente.php");
     exit();
   } else {
     echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
