@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Datos simulados temporalmente
 $usuario = [
   'nombre' => 'Cristian',
   'correo' => 'correo@prueba.com',
@@ -13,12 +12,12 @@ $usuario = [
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mi Cuenta - Psicovínculo</title>
-  <link rel="stylesheet" href="../css/mi_panel.css">
+  <link rel="stylesheet" href="../css/mi_panel.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <?php include("header.php"); ?>
@@ -28,43 +27,43 @@ $usuario = [
     <div class="grid-panel">
 
       <div class="card">
-        <i class="fas fa-user-circle"></i>
+        <i class="fas fa-user-circle icon"></i>
         <h3>Perfil</h3>
-        <p><?php echo $usuario['nombre']; ?></p>
-        <p><?php echo $usuario['correo']; ?></p>
+        <p><strong>Nombre:</strong> <?= $usuario['nombre']; ?></p>
+        <p><strong>Correo:</strong> <?= $usuario['correo']; ?></p>
         <a href="#" class="btn">Ver perfil</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-calendar-check"></i>
+        <i class="fas fa-calendar-check icon"></i>
         <h3>Mis Reservas</h3>
         <p>Consulta tus charlas pasadas y futuras.</p>
         <a href="#" class="btn">Ver reservas</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star icon"></i>
         <h3>Calificaciones</h3>
         <p>Revisa tus valoraciones dadas.</p>
         <a href="#" class="btn">Ver calificaciones</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-bell"></i>
+        <i class="fas fa-bell icon"></i>
         <h3>Notificaciones</h3>
         <p>Tienes 2 notificaciones nuevas.</p>
         <a href="#" class="btn">Ver mensajes</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-user-cog"></i>
+        <i class="fas fa-cog icon"></i>
         <h3>Configuración</h3>
-        <p>Cambia tus datos o contraseña.</p>
-        <a href="#" class="btn">Configurar</a>
+        <p>Modifica tu contraseña o datos.</p>
+        <a href="#" class="btn">Editar cuenta</a>
       </div>
 
       <div class="card">
-        <i class="fas fa-sign-out-alt"></i>
+        <i class="fas fa-sign-out-alt icon"></i>
         <h3>Salir</h3>
         <p>Cierra tu sesión con seguridad.</p>
         <a href="../logout.php" class="btn">Cerrar sesión</a>
