@@ -51,8 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
   </header>
 
-  <div class="contenedor__todo">
-    <div class="contenedor__login">
+  <main class="login-main">
+    <div class="login-container">
       <form method="POST" class="formulario__login">
         <h2>Iniciar Sesión</h2>
         <input type="email" name="correo" placeholder="Correo Electrónico" required>
@@ -62,12 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <a class="btn__registrarse" href="registro.php">Registrarse</a>
       </form>
     </div>
-
-    <div class="contenedor__info">
-      <h2>Bienvenido a Psicovínculo</h2>
-      <p>Accede para reservar citas y participar en nuestras charlas.</p>
-    </div>
-  </div>
+  </main>
 
   <footer class="footer">
     <div class="container">
