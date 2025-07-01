@@ -43,7 +43,7 @@ if (isset($_SESSION["usuario"])) {
         <h2>¡Bienvenido, <?= htmlspecialchars($nombreCompleto) ?>!</h2>
         <p>Es un gusto tenerte en Psicovínculo. Aquí podrás encontrar recursos gratuitos, servicios y charlas
         psicoeducativas pensadas para ti. Explora, aprende y cuida de tu bienestar emocional junto a nosotros.</p>
-        <a href="../eventos.php" class="btn btn-primary" style="margin-top: 20px;">Buscar charlas</a>
+        <a href="../buscar_charlas.php" class="btn btn-primary" style="margin-top: 20px;">Buscar charlas</a>
       </div>
     </div>
   </section>
