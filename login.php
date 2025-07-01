@@ -52,28 +52,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
   </header>
 
-  <!-- Página de login dividida en dos -->
-  <div id="tservicios" class="contenedor">
-    <div class="contenedor__todo">
-      <div class="caja__trasera">
-        <div class="caja__trasera-login">
-          <h3>¿Aún no tienes una cuenta?</h3>
-          <p>Regístrate para que puedas iniciar sesión</p>
-          <a href="registro.php"><button id="btn__registrarse">Registrarse</button></a>
-        </div>
-      </div>
+<div class="contenedor__login-register">
+  <!-- Formulario de Login -->
+  <form method="POST" class="formulario__login">
+    <h2>Iniciar Sesión</h2>
+    <input type="email" placeholder="Correo Electrónico" name="correo" required>
+    <input type="password" placeholder="Contraseña" name="contraseña" required>
+    <button type="submit">Entrar</button>
 
-      <div class="contenedor__login-register">
-        <!-- Formulario de Login -->
-        <form method="POST" class="formulario__login">
-          <h2>Iniciar Sesión</h2>
-          <input type="email" placeholder="Correo Electrónico" name="correo" required>
-          <input type="password" placeholder="Contraseña" name="contraseña" required>
-          <button type="submit">Entrar</button>
-        </form>
-      </div>
-    </div>
-  </div>
+    <!-- Nuevo texto y botón de registro debajo -->
+    <p class="no-cuenta-text">¿No tienes una cuenta?</p>
+    <a href="registro.php" class="btn__registrarse">Regístrate</a>
+  </form>
+</div>
 
   <footer class="footer">
     <div class="container">
