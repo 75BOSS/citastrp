@@ -35,8 +35,6 @@ if (isset($_SESSION["usuario"])) {
   <section class="gallery-slider">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="../imagen/estudiantes.jpg" alt="Galería 1"></div>
-        <div class="swiper-slide"><img src="../imagen/estudiantes2.jpg" alt="Galería 2"></div>
         <div class="swiper-slide"><img src="../imagen/estudiantes3.jpg" alt="Galería 3"></div>
       </div>
     </div>
