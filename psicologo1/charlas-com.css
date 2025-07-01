@@ -1,0 +1,150 @@
+/* charlas-impartidas.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f5fb;
+  color: #333;
+}
+
+header {
+  background-color: #6b3fa0;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #a48ccf;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+nav a {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  padding: 10px 15px;
+  border: 2px solid white;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: white;
+  color: #6b3fa0;
+}
+
+main {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.tabla-charlas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-charlas thead {
+  background-color: #6b3fa0;
+  color: white;
+}
+
+.tabla-charlas th,
+.tabla-charlas td {
+  padding: 15px;
+  text-align: center;
+}
+
+.tabla-charlas tr:nth-child(even) {
+  background-color: #f2edf8;
+}
+
+
+.tabla-charlas a {
+  text-decoration: none;
+  padding: 6px 12px;
+  background-color: #6b3fa0;
+  color: white;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.tabla-charlas a:hover {
+  background-color: #563285;
+}
+
+header {
+  background-color: #854dc9;
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 4px solid #a48ccf;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 85px;
+  margin-right: 15px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-text .highlight {
+  color: #f7f5fb;
+}
+
+.titulo-centro {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+
+.estado {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.estado.pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.estado.confirmado {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.estado.cancelado {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
