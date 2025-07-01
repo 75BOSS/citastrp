@@ -11,7 +11,7 @@ include '../conexion.php';
   <link rel="stylesheet" href="../css/index.css">
   <style>
     .auditorio-section {
-      background-color: #5c2d91;
+      background-color: #6a4c93;
       padding: 40px 20px;
       min-height: 400px;
     }
