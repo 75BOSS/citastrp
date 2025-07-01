@@ -1,23 +1,38 @@
 <?php
 session_start();
+include 'conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $correo = $_POST["correo"] ?? '';
-  $contraseña = $_POST["contraseña"] ?? '';
+    $correo = $_POST["correo"] ?? '';
+    $contraseña = $_POST["contraseña"] ?? '';
 
-  if ($correo === "correo@prueba.com" && $contraseña === "12345") {
-    $_SESSION["usuario"] = $correo;
-    $_SESSION["rol"] = "paciente";
-    header("Location: paciente/index_paciente.php");
-    exit();
-  } else {
-    echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
-    exit();
-  }
+    if ($correo && $contraseña) {
+        $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE correo = ? AND activo = 1");
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows === 1) {
+            $usuario = $resultado->fetch_assoc();
+            if (password_verify($contraseña, $usuario['contraseña'])) {
+                $_SESSION["usuario"] = $usuario["correo"];
+                $_SESSION["rol"] = $usuario["rol"];
+                if ($usuario["rol"] === "paciente") {
+                    header("Location: paciente/index_paciente.php");
+                } elseif ($usuario["rol"] === "psicologo") {
+                    header("Location: psicologo1/index_psicolog.html");
+                } else {
+                    echo "<script>alert('Rol no válido'); window.location.href='login.php';</script>";
+                }
+                exit();
+            }
+        }
+        echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
+        exit();
+    }
 }
 ?>
 
-<!DOCTYPE html>
 <html lang="es">
 
 <head>

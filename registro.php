@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php
+include 'conexion.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'] ?? '';
+    $correo = $_POST['correo'] ?? '';
+    $contraseña = $_POST['contraseña'] ?? '';
+    $rol = $_POST['rol'] ?? '';
+    $cedula = $_POST['cedula'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $codigo = $_POST['codigo_estudiante'] ?? null;
+
+    if ($nombre && $correo && $contraseña && $rol && $cedula) {
+        $contraseñaHash = password_hash($contraseña, PASSWORD_DEFAULT);
+
+        $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, correo, contraseña, rol, cedula, telefono, codigo_estudiante) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $nombre, $correo, $contraseñaHash, $rol, $cedula, $telefono, $codigo);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Registro exitoso'); window.location.href='login.php';</script>";
+        } else {
+            echo "<script>alert('Error al registrar: " . $stmt->error . "');</script>";
+        }
+    } else {
+        echo "<script>alert('Faltan datos requeridos');</script>";
+    }
+}
+?>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
