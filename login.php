@@ -49,4 +49,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
   </div>
 </body>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>INFORMACIÓN</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Isabel La Católica N. 23-52 y Madrid.</p>
+        <p><i class="fas fa-phone"></i> 0960951729</p>
+        <p><i class="fas fa-envelope"></i> fabian.carsola@ups.edu.ec</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>REDES SOCIALES</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>ATENCIÓN</h4>
+        <p>LUNES A VIERNES</p>
+        <p>9:00 AM - 17:00 PM</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>NUESTROS SERVICIOS</h4>
+        <ul>
+          <li>Tratamientos de Ansiedad</li>
+          <li>Terapia para Depresión</li>
+          <li>Mejora de Autoestima</li>
+          <li>Terapia para Parejas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Psicovínculo. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
 </html>

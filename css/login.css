@@ -100,3 +100,55 @@ body {
     font-size: 1.3rem;
   }
 }
+
+.footer {
+  background-color: #6a4c93;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-section h4 {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 0.5rem;
+}
+
+.footer-section p,
+.footer-section li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section .social-icons a {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #ddd;
+  border-top: 1px solid #fff;
+  padding-top: 1rem;
+}
