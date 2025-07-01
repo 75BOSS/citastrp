@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_
                 if ($usuario["rol"] === "paciente") {
                     header("Location: paciente/index_paciente.php");
                 } elseif ($usuario["rol"] === "psicologo") {
-                    header("Location: psicologo1/index_psicologo.php");
+                    header("Location: psicologo1/index-psicologo.php");
                 } else {
                     echo "<script>alert('Rol no válido'); window.location.href='login.php';</script>";
                 }
