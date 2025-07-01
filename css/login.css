@@ -1,54 +1,53 @@
-/* Estilos base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f4f4f9;
   color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
-/* Contenedor principal */
-.contenedor {
-  flex: 1;
+.login-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
+  min-height: 75vh;
 }
 
-/* Cuadro blanco */
-.formulario__login {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.login-container {
+  display: flex;
+  gap: 40px;
+  max-width: 900px;
   width: 100%;
-  max-width: 400px;
+  background: #e8dff5;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.login-box {
+  flex: 1 1 350px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  color: #5a2d82;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.formulario__login h2 {
-  color: #5a2d82;
-  margin-bottom: 1.5rem;
-}
-
-.formulario__login input {
+.login-form input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
 }
 
-.formulario__login button[type="submit"] {
+.login-form button {
   width: 100%;
   padding: 12px;
   background: linear-gradient(90deg, #7f56d9, #5a2d82);
@@ -56,99 +55,65 @@ body {
   border: none;
   border-radius: 8px;
   font-weight: bold;
-  cursor: pointer;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
-.formulario__login button:hover {
+.login-form button:hover {
   background: #5a2d82;
 }
 
-/* Texto y botón de registro */
-.no-cuenta-text {
+.register-text {
+  margin-top: 15px;
   font-size: 0.95rem;
-  color: #555;
-  margin-top: 10px;
-  margin-bottom: 8px;
+  color: #666;
+  text-align: center;
 }
 
-.btn__registrarse {
-  display: inline-block;
-  padding: 10px 20px;
-  background: transparent;
+.btn-register {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  background: none;
   color: #7f56d9;
   border: 2px solid #7f56d9;
+  padding: 10px;
   border-radius: 8px;
-  font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.btn__registrarse:hover {
+.btn-register:hover {
   background: #7f56d9;
   color: white;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-  .formulario__login {
-    padding: 1.5rem;
-  }
-
-  .formulario__login h2 {
-    font-size: 1.3rem;
-  }
-}
-
-.footer {
-  background-color: #6a4c93;
-  color: white;
-  padding: 40px 20px;
-  margin-top: 60px;
-}
-
-.footer-container {
+.login-side-text {
+  flex: 1 1 300px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 
-.footer-section {
-  flex: 1;
-  min-width: 220px;
+.login-side-text h3 {
+  color: #5a2d82;
+  margin-bottom: 10px;
 }
 
-.footer-section h4 {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 0.5rem;
+.login-side-text p {
+  font-size: 1rem;
+  color: #444;
 }
 
-.footer-section p,
-.footer-section li {
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    padding: 20px;
+  }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section .social-icons a {
-  color: white;
-  margin-right: 10px;
-  font-size: 1.2rem;
-  text-decoration: none;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: #ddd;
-  border-top: 1px solid #fff;
-  padding-top: 1rem;
+  .login-side-text {
+    text-align: center;
+  }
 }
