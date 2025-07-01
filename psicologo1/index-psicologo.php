@@ -2,48 +2,41 @@
 session_start();
 include("conexion.php");
 
-if (!isset($_SESSION['correo']) || $_SESSION['rol'] !== 'psicologo') {
+if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'psicologo') {
     header("Location: login.php");
     exit();
 }
 
-$correo = $_SESSION['correo'];
+$correo = $_SESSION['usuario'];
+$perfil = [];
+$id_psicologo = null;
 
 // Obtener datos del psicólogo
-$stmt = $conexion->prepare("SELECT id, nombre, telefono FROM usuarios WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-$result = $stmt->get_result();
-$perfil = $result->fetch_assoc();
-$id_psicologo = $perfil['id'] ?? null;
-
-if (!$id_psicologo) {
-    die("Error al obtener el ID del psicólogo.");
+$consulta = $conexion->query("SELECT id, nombre, telefono FROM usuarios WHERE correo = '$correo' LIMIT 1");
+if ($consulta && $consulta->num_rows > 0) {
+    $perfil = $consulta->fetch_assoc();
+    $id_psicologo = $perfil['id'];
 }
 
-// Total de charlas
-$total_result = $conexion->query("SELECT COUNT(*) as total FROM charlas WHERE id_psicologo = $id_psicologo");
-$total_row = $total_result->fetch_assoc();
-$total = $total_row['total'] ?? 0;
-
-// Próxima charla
-$prox_result = $conexion->query("SELECT * FROM charlas WHERE id_psicologo = $id_psicologo AND fecha >= CURDATE() ORDER BY fecha ASC, hora_inicio ASC LIMIT 1");
-$prox_charla = $prox_result->fetch_assoc();
-
-// Próximas charlas
-$proximas_charlas = $conexion->query("SELECT * FROM charlas WHERE id_psicologo = $id_psicologo AND fecha >= CURDATE() ORDER BY fecha ASC LIMIT 5");
-
-// Charlas por mes del año actual
+// Charlas programadas
+$total = 0;
+$prox_charla = null;
 $charlas_por_mes = array_fill(1, 12, 0);
-$sql_mes = "SELECT MONTH(fecha) as mes, COUNT(*) as cantidad 
-            FROM charlas 
-            WHERE id_psicologo = $id_psicologo 
-              AND YEAR(fecha) = YEAR(CURDATE())
-            GROUP BY MONTH(fecha)";
-$result_mes = $conexion->query($sql_mes);
-while ($row = $result_mes->fetch_assoc()) {
-    $mes = (int)$row['mes'];
-    $charlas_por_mes[$mes] = (int)$row['cantidad'];
+$proximas_charlas = [];
+
+if ($id_psicologo) {
+    $res_total = $conexion->query("SELECT COUNT(*) as total FROM charlas WHERE id_psicologo = $id_psicologo");
+    $total = $res_total->fetch_assoc()['total'] ?? 0;
+
+    $prox = $conexion->query("SELECT * FROM charlas WHERE id_psicologo = $id_psicologo AND fecha >= CURDATE() ORDER BY fecha ASC, hora_inicio ASC LIMIT 1");
+    $prox_charla = $prox->fetch_assoc();
+
+    $proximas_charlas = $conexion->query("SELECT * FROM charlas WHERE id_psicologo = $id_psicologo AND fecha >= CURDATE() ORDER BY fecha ASC LIMIT 5");
+
+    $res_mes = $conexion->query("SELECT MONTH(fecha) as mes, COUNT(*) as cantidad FROM charlas WHERE id_psicologo = $id_psicologo AND YEAR(fecha) = YEAR(CURDATE()) GROUP BY MONTH(fecha)");
+    while ($row = $res_mes->fetch_assoc()) {
+        $charlas_por_mes[(int)$row['mes']] = (int)$row['cantidad'];
+    }
 }
 ?>
 
@@ -60,7 +53,7 @@ while ($row = $result_mes->fetch_assoc()) {
   <header class="panel-header">
     <h1 class="logo">Psico<span class="highlight" style="color:#f2b705">Vínculo</span></h1>
     <nav class="panel-nav">
-          <a href="index-psicologo.php">Inicio</a>
+      <a href="index-psicologo.php">Inicio</a>
       <a href="generar-charla.php">Programar Charla</a>
       <a href="charlas-impartidas.php">Mis Charlas</a>
       <a href="mi-cuenta.php">Mi Cuenta</a>
@@ -98,26 +91,25 @@ while ($row = $result_mes->fetch_assoc()) {
     </section>
 
     <div class="alerta">
-      <i class="fas fa-bell"></i> <?= $prox_charla ? "Tienes una charla el " . $prox_charla['fecha'] . " a las " . substr($prox_charla['hora_inicio'], 0, 5) : "Sin charlas programadas mañana" ?>
-    </div>
-
-    <div class="testimonios">
-      <blockquote>
-        "Excelente charla sobre estrés. Muy clara y útil." – Anónimo
-      </blockquote>
+      <i class="fas fa-bell"></i>
+      <?= $prox_charla ? "Tienes una charla el " . $prox_charla['fecha'] . " a las " . substr($prox_charla['hora_inicio'], 0, 5) : "Sin charlas programadas" ?>
     </div>
 
     <section class="charlas">
       <h3>Charlas Próximas</h3>
-      <?php while ($charla = $proximas_charlas->fetch_assoc()): ?>
-        <div class="charla-box">
-          <h4><?= htmlspecialchars($charla['titulo']) ?></h4>
-          <p><strong>Fecha:</strong> <?= $charla['fecha'] ?></p>
-          <p><strong>Hora:</strong> <?= substr($charla['hora_inicio'], 0, 5) ?></p>
-          <p><strong>Cupo Máximo:</strong> <?= htmlspecialchars($charla['cupo_maximo']) ?></p>
-          <a class="ver-detalles" href="detalle-charla.php?id=<?= $charla['id'] ?>">Ver Detalles</a>
-        </div>
-      <?php endwhile; ?>
+      <?php if ($proximas_charlas instanceof mysqli_result): ?>
+        <?php while ($charla = $proximas_charlas->fetch_assoc()): ?>
+          <div class="charla-box">
+            <h4><?= htmlspecialchars($charla['titulo']) ?></h4>
+            <p><strong>Fecha:</strong> <?= $charla['fecha'] ?></p>
+            <p><strong>Hora:</strong> <?= substr($charla['hora_inicio'], 0, 5) ?></p>
+            <p><strong>Cupo Máximo:</strong> <?= htmlspecialchars($charla['cupo_maximo']) ?></p>
+            <a class="ver-detalles" href="detalle-charla.php?id=<?= $charla['id'] ?>">Ver Detalles</a>
+          </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <p>No hay charlas próximas.</p>
+      <?php endif; ?>
     </section>
 
     <section class="perfil">
