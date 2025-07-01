@@ -1,18 +1,12 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$host = "localhost";
-$user = "u240362798_citasTRP";
-$pass = "glcp.,._2A.";
-$db   = "u240362798_citasTRP";
+$host = "localhost"; // Cambiar a "mysql.hostinger.com" si no funciona
+$user = "u240362798_reservas1";
+$pass = "Lap2incasablanca";
+$db = "u240362798_reservas";
 
 $conexion = new mysqli($host, $user, $pass, $db);
 
 if ($conexion->connect_error) {
-    die("Problemas en la conexión: " . $conexion->connect_error);
+    die("Error de conexión: " . $conexion->connect_error);
 }
-
-$conexion->set_charset("utf8");
 ?>
