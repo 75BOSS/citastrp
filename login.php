@@ -19,22 +19,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iniciar sesión - Psicovínculo</title>
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
-  <!-- Barra de navegación -->
+  <!-- Header -->
   <header class="header">
     <nav class="navbar">
       <div class="logo">
         <a href="index.php" class="logo-link">
-          <img src="imagen/logo.png" class="logo-psicovinculo" alt="Psicovínculo">
+          <img src="imagen/logo.png" class="logo-psicovinculo" alt="Psicovínculo" />
         </a>
         <span>Psicovínculo</span>
       </div>
@@ -52,27 +51,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
   </header>
 
-<div class="contenedor__login-register">
-  <!-- Formulario de Login -->
-  <form method="POST" class="formulario__login">
-    <h2>Iniciar Sesión</h2>
-    <input type="email" placeholder="Correo Electrónico" name="correo" required>
-    <input type="password" placeholder="Contraseña" name="contraseña" required>
-    <button type="submit">Entrar</button>
+  <!-- Login form -->
+  <div class="contenedor">
+    <div class="contenedor__todo">
+      <div class="contenedor__login-register">
+        <form method="POST" class="formulario__login">
+          <h2>Iniciar Sesión</h2>
+          <input type="email" placeholder="Correo Electrónico" name="correo" required />
+          <input type="password" placeholder="Contraseña" name="contraseña" required />
+          <button type="submit">Entrar</button>
 
-    <!-- Nuevo texto y botón de registro debajo -->
-    <p class="no-cuenta-text">¿No tienes una cuenta?</p>
-    <a href="registro.php" class="btn__registrarse">Regístrate</a>
-  </form>
-</div>
+          <p class="no-cuenta-text">¿No tienes una cuenta?</p>
+          <a href="registro.php" class="btn__registrarse">Regístrate</a>
+        </form>
+      </div>
+    </div>
+  </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-info">
         <h4>INFORMACIÓN</h4>
-        <p><i class="fas fa-map-marker-alt"></i>
-          <a href="https://maps.app.goo.gl/CJ5V1qExnY63Y8Xn7" target="_blank">Av. Isabel La Católica N. 23-52 y Madrid.</a>
-        </p>
+        <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/CJ5V1qExnY63Y8Xn7" target="_blank">Av. Isabel La Católica N. 23-52 y Madrid.</a></p>
         <p><i class="fas fa-phone"></i> 0960951729</p>
         <p><i class="fas fa-envelope"></i> fabian.carsola@ups.edu.ec</p>
       </div>
@@ -103,5 +104,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   <script src="js/iniciar.js"></script>
 </body>
-
 </html>
