@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"]) && $_POST["
                 <input type="password" placeholder="Contraseña" name="contraseña" required>
                 <input type="text" placeholder="Cédula" name="cedula" required>
                 <input type="text" placeholder="Teléfono (opcional)" name="telefono">
-                <select name="rol" required>
+                <select name="rol" class="select__registro" required>
                     <option value="">Selecciona un rol</option>
                     <option value="paciente">Paciente</option>
                     <option value="psicologo">Psicólogo</option>
@@ -144,7 +144,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"]) && $_POST["
             <p><i class="fas fa-phone"></i> 0960951729</p>
             <p><i class="fas fa-envelope"></i> fabian.carsola@ups.edu.ec</p>
         </div>
-
         <div class="footer-social">
             <h4>NUESTRAS REDES SOCIALES</h4>
             <div class="social-media">
@@ -152,13 +151,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"]) && $_POST["
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
-
         <div class="footer-attention">
             <h4>ATENCIÓN</h4>
             <p>LUNES A VIERNES</p>
             <p>9:00 AM - 17:00 PM</p>
         </div>
-
         <div class="footer-newsletter">
             <h4>NUESTROS SERVICIOS</h4>
             <p class="hover-levanta">Tratamientos de Depresión</p>
