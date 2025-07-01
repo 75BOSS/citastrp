@@ -182,25 +182,87 @@ a {
     margin-top: 1rem;
 }
 
-.social-media a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background: transparent;
-    border: 1px solid #e0e4e9;
-    border-radius: 3px;
-    color: #ffffff;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+/* Contenedor principal */
+.contenedor {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
 }
 
-.social-media a:hover {
-    background: #a455ac;
-    border-color: #d3c4f5;
-    color: white;
+/* Contenedor del cuadro blanco */
+.contenedor__login-register {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
+
+/* Formulario */
+.formulario__login h2 {
+  font-size: 1.6rem;
+  color: #5a2d82;
+  margin-bottom: 1rem;
+}
+
+.formulario__login input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.formulario__login button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #7f56d9, #5a2d82);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.formulario__login button:hover {
+  background: #5a2d82;
+}
+
+/* Texto de registro */
+.no-cuenta-text {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Botón de registrarse */
+.btn__registrarse {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 10px 20px;
+  background: transparent;
+  color: #7f56d9;
+  border: 2px solid #7f56d9;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn__registrarse:hover {
+  background: #7f56d9;
+  color: white;
+}
+
 
 /* Attention Section */
 .footer-attention p {
