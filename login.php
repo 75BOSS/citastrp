@@ -26,15 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-
 <body>
   <!-- Header -->
   <header class="header">
     <nav class="navbar">
       <div class="logo">
-        <a href="index.php" class="logo-link">
-          <img src="imagen/logo.png" class="logo-psicovinculo" alt="Psicovínculo" />
-        </a>
+        <a href="index.php"><img src="imagen/logo.png" alt="Psicovínculo" class="logo-psicovinculo"></a>
         <span>Psicovínculo</span>
       </div>
       <ul class="menu">
@@ -51,20 +48,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
   </header>
 
-  <!-- Login form -->
+  <!-- Login Container -->
   <div class="contenedor">
-    <div class="contenedor__todo">
-      <div class="contenedor__login-register">
-        <form method="POST" class="formulario__login">
-          <h2>Iniciar Sesión</h2>
-          <input type="email" placeholder="Correo Electrónico" name="correo" required />
-          <input type="password" placeholder="Contraseña" name="contraseña" required />
-          <button type="submit">Entrar</button>
+    <div class="formulario__login">
+      <h2>Iniciar Sesión</h2>
+      <form method="POST">
+        <input type="email" name="correo" placeholder="Correo Electrónico" required />
+        <input type="password" name="contraseña" placeholder="Contraseña" required />
+        <button type="submit">Entrar</button>
+      </form>
 
-          <p class="no-cuenta-text">¿No tienes una cuenta?</p>
-          <a href="registro.php" class="btn__registrarse">Regístrate</a>
-        </form>
-      </div>
+      <p class="no-cuenta-text">¿Aún no tienes una cuenta?</p>
+      <a href="registro.php" class="btn__registrarse">Registrarse</a>
     </div>
   </div>
 
@@ -73,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="container">
       <div class="footer-info">
         <h4>INFORMACIÓN</h4>
-        <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/CJ5V1qExnY63Y8Xn7" target="_blank">Av. Isabel La Católica N. 23-52 y Madrid.</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Isabel La Católica N. 23-52 y Madrid.</p>
         <p><i class="fas fa-phone"></i> 0960951729</p>
         <p><i class="fas fa-envelope"></i> fabian.carsola@ups.edu.ec</p>
       </div>
@@ -101,7 +96,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     </div>
   </footer>
-
-  <script src="js/iniciar.js"></script>
 </body>
 </html>
