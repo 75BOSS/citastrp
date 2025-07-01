@@ -115,12 +115,6 @@ select:focus {
     width: 100%;
 }
 
-.auth-buttons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
 /* Footer */
 .footer {
     background: #6a4c93;
