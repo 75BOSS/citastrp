@@ -2,7 +2,8 @@
 session_start();
 include 'conexion.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// LOGIN
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_POST["contraseña"]) && isset($_POST["accion"]) && $_POST["accion"] === "login") {
     $correo = $_POST["correo"] ?? '';
     $contraseña = $_POST["contraseña"] ?? '';
 
@@ -29,6 +30,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         echo "<script>alert('Credenciales incorrectas'); window.location.href='login.php';</script>";
         exit();
+    }
+}
+
+// REGISTRO
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"]) && $_POST["accion"] === "registro") {
+    $nombre = $_POST['nombre'] ?? '';
+    $correo = $_POST['correo'] ?? '';
+    $contraseña = $_POST['contraseña'] ?? '';
+    $rol = $_POST['rol'] ?? '';
+    $cedula = $_POST['cedula'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $codigo = $_POST['codigo_estudiante'] ?? null;
+
+    if ($nombre && $correo && $contraseña && $rol && $cedula) {
+        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+        $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, correo, contraseña, rol, cedula, telefono, codigo_estudiante) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $nombre, $correo, $hash, $rol, $cedula, $telefono, $codigo);
+        if ($stmt->execute()) {
+            echo "<script>alert('Registro exitoso, ahora puedes iniciar sesión'); window.location.href='login.php';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Error al registrar: " . $stmt->error . "');</script>";
+        }
+    } else {
+        echo "<script>alert('Faltan campos obligatorios');</script>";
     }
 }
 ?>
@@ -76,20 +102,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="caja__trasera-register">
                 <h3>¿Aún no tienes una cuenta?</h3>
                 <p>Regístrate para que puedas iniciar sesión</p>
-                <button id="btn__registrarse">Regístrarse</button>
+                <button id="btn__registrarse">Registrarse</button>
             </div>
         </div>
         <div class="contenedor__login-register">
             <!--Formulario de Login-->
             <form action="login.php" method="POST" class="formulario__login">
                 <h2>Iniciar Sesión</h2>
+                <input type="hidden" name="accion" value="login">
                 <input type="text" placeholder="Correo Electrónico" name="correo" required>
                 <input type="password" placeholder="Contraseña" name="contraseña" required>
                 <button>Entrar</button>
             </form>
-            <!--Formulario de Registro (NO FUNCIONAL EN ESTE ARCHIVO)-->
-            <form action="registro.php" method="POST" class="formulario__register">
+
+            <!--Formulario de Registro-->
+            <form action="login.php" method="POST" class="formulario__register">
                 <h2>Registrarse</h2>
+                <input type="hidden" name="accion" value="registro">
                 <input type="text" placeholder="Nombre completo" name="nombre" required>
                 <input type="email" placeholder="Correo Electrónico" name="correo" required>
                 <input type="password" placeholder="Contraseña" name="contraseña" required>
