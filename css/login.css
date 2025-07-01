@@ -1,22 +1,22 @@
 /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f8f9fa;
     color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
+    transition: border-color 0.3s ease;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+select:focus {
+    border-color: #6c63ff;
+    outline: none;
 }
+
 
 /* Buttons */
 .btn {
