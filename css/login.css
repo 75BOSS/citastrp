@@ -115,6 +115,20 @@ select:focus {
     width: 100%;
 }
 
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.auth-buttons .bienvenido {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #333;
+    white-space: nowrap;
+}
+
+
 /* Footer */
 .footer {
     background: #6a4c93;
