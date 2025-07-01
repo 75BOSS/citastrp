@@ -1,0 +1,160 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f8f6ff;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #b69bed;
+  color: white;
+  padding: 40px 0;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  height: 90px;
+}
+
+.centrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.titulo {
+  margin: 15px;
+  font-size: 24px;
+  color: white;
+}
+
+/* Navegación */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  background-color: #9575cd;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #bfa4ee;
+}
+
+/* Perfil */
+.perfil img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.perfil img:hover {
+  transform: scale(1.5);
+}
+
+/* Título sección principal */
+h2 {
+  padding: 20px;
+  margin: 0;
+  color: #5e35b1;
+}
+
+p {
+  padding: 0 20px;
+  margin-top: -10px;
+}
+
+/* Tarjetas */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.tarjeta {
+  background-color: #ede7f6;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta h3 {
+  margin-bottom: 10px;
+  color: #512da8;
+}
+
+.tarjeta p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #311b92;
+  margin: 0;
+}/* Estilos Responsive */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .centrado {
+    width: 100%;
+    align-items: center;
+  }
+
+  .perfil {
+    order: 3;
+  }
+
+  .tarjetas {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .tarjeta {
+    width: 100%;
+  }
+
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .titulo {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .perfil img {
+    width: 45px;
+    height: 45px;
+  }
+}
