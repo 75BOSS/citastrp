@@ -47,7 +47,31 @@ if (isset($_SESSION["usuario"])) {
       </div>
     </div>
   </section>
-
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;">Objetivos del Proyecto</h2>
+      <div class="card-grid">
+        <div class="info-card objetivo-card objetivo-1">
+          <p>
+          <h4>Concienciar sobre salud mental, sexualidad, autoestima y más.</h4>
+          </p>
+          <img src="imagen/estilo-de-vida-saludable.png" alt="Saludable" class="icon-img">
+        </div>
+        <div class="info-card objetivo-card objetivo-2">
+          <p>
+          <h4>Promover espacios de diálogo y aprendizaje.</h4>
+          </p>
+          <img src="imagen/dialogo.png" alt="Diálogo" class="icon-img">
+        </div>
+        <div class="info-card objetivo-card objetivo-3">
+          <p>
+          <h4>Fomentar el bienestar psicológico desde un enfoque preventivo.</h4>
+          </p>
+          <img src="imagen/secundario.png" alt="Bienestar" class="icon-img">
+        </div>
+      </div>
+    </div>
+  </section>
   <?php include 'footer.php'; ?>
 </body>
 </html>
