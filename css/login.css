@@ -522,3 +522,36 @@ a {
   background: #7f56d9;
   color: white;
 }
+
+
+
+
+
+
+
+
+
+
+.no-cuenta-text {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.btn__registrarse {
+  margin-top: 0.5rem;
+  display: inline-block;
+  padding: 10px 20px;
+  background: transparent;
+  color: #7f56d9;
+  border: 2px solid #7f56d9;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn__registrarse:hover {
+  background: #7f56d9;
+  color: white;
+}
