@@ -3,7 +3,7 @@ session_start();
 include 'conexion.php';
 
 // LOGIN
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_POST["contraseña"]) && isset($_POST["accion"]) && $_POST["accion"] === "login") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"]) && $_POST["accion"] === "login") {
     $correo = $_POST["correo"] ?? '';
     $contraseña = $_POST["contraseña"] ?? '';
 
@@ -15,15 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["correo"]) && isset($_
 
         if ($resultado->num_rows === 1) {
             $usuario = $resultado->fetch_assoc();
+
             if (password_verify($contraseña, $usuario['contraseña'])) {
                 $_SESSION["usuario"] = $usuario["correo"];
                 $_SESSION["rol"] = $usuario["rol"];
-                if ($usuario["rol"] === "paciente") {
-                    header("Location: paciente/index_paciente.php");
-                } elseif ($usuario["rol"] === "psicologo") {
-                    header("Location: psicologo1/index-psicologo.php");
-                } else {
-                    echo "<script>alert('Rol no válido'); window.location.href='login.php';</script>";
+
+                switch ($usuario["rol"]) {
+                    case "paciente":
+                        header("Location: paciente/index_paciente.php");
+                        break;
+                    case "psicologo":
+                        header("Location: psicologo1/index-psicologo.php");
+                        break;
+                    case "admin":
+                        header("Location: ADMIN/index.php");
+                        break;
+                    default:
+                        echo "<script>alert('Rol no válido'); window.location.href='login.php';</script>";
+                        break;
                 }
                 exit();
             }
